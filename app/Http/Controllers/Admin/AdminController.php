@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Auth;
+use App\Models\Seller;
 
 class AdminController extends Controller
 {
@@ -38,5 +39,39 @@ class AdminController extends Controller
     public function dashboard()
     {
         return view('admin.dashboard');
+    }
+
+    public function showSellers()
+    {
+        $sellers = Seller::all();
+        return view('admin.sellers.index', compact('sellers'));
+    }
+
+    public function createSeller()
+    {
+        return view('admin.sellers.create');
+    }
+
+    public function storeSeller(Request $request)
+    {
+        $seller = Seller::create($request->all());
+        return redirect()->route('admin.sellers.index');
+    }
+
+    public function editSeller(Seller $seller)
+    {
+        return view('admin.sellers.edit', compact('seller'));
+    }
+
+    public function updateSeller(Request $request, Seller $seller)
+    {
+        $seller->update($request->all());
+        return redirect()->route('admin.sellers.index');
+    }
+
+    public function deleteSeller(Seller $seller)
+    {
+        $seller->delete();
+        return redirect()->route('admin.sellers.index');
     }
 }

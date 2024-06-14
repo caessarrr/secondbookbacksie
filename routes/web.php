@@ -35,8 +35,14 @@ Route::prefix('admin')->group(function () {
 
     Route::middleware([AdminAuth::class])->group(function () {
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+
         
-        
+        Route::get('/sellers', [AdminController::class, 'showSellers'])->name('admin.sellers.index');
+        Route::get('/sellers/create', [AdminController::class, 'createSeller'])->name('admin.sellers.create');
+        Route::post('/sellers', [AdminController::class, 'storeSeller'])->name('admin.sellers.store');
+        Route::get('/sellers/{seller}/edit', [AdminController::class, 'editSeller'])->name('admin.sellers.edit');
+        Route::put('/sellers/{seller}', [AdminController::class, 'updateSeller'])->name('admin.sellers.update');
+        Route::delete('/sellers/{seller}', [AdminController::class, 'deleteSeller'])->name('admin.sellers.delete');
     });
 
 });
@@ -59,3 +65,5 @@ Route::middleware(['auth'])->group(function () {
 
 
 // routes/web.php
+
+
