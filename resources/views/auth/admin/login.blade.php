@@ -4,78 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login</title>
-    <!-- Anda bisa menambahkan link CSS di sini -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Admin Login</div>
-
-                    <div class="card-body">
+<body class="bg-gray-900 text-white">
+    <div class="container mx-auto mt-20">
+        <div class="flex justify-center">
+            <div class="w-full max-w-md">
+                <div class="bg-gray-800 shadow-md rounded-lg overflow-hidden">
+                    <div class="bg-gray-900 px-6 py-4">
+                        <h2 class="text-white text-xl font-semibold">Admin Login</h2>
+                    </div>
+                    <div class="px-6 py-4">
                         <form method="POST" action="{{ route('admin.login.submit') }}">
                             @csrf
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-400">E-Mail Address</label>
+                                <input id="email" type="email" class="w-full px-3 py-2 bg-gray-700 text-white rounded-md @error('email') border-red-500 @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                @error('email')
+                                    <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
+                                @enderror
+                            </div>
 
-                            <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            <div class="mb-4">
+                                <label for="password" class="block text-gray-400">Password</label>
+                                <input id="password" type="password" class="w-full px-3 py-2 bg-gray-700 text-white rounded-md @error('password') border-red-500 @enderror" name="password" required autocomplete="current-password">
+                                @error('password')
+                                    <span class="text-red-500 text-sm mt-1">{{ $message }}</span>
+                                @enderror
+                            </div>
 
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                            <div class="mb-4">
+                                <div class="flex items-center">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" class="h-4 w-4 text-indigo-600 transition duration-150 ease-in-out" {{ old('remember') ? 'checked' : '' }}>
+                                    <label class="ml-2 block text-gray-400" for="remember">
+                                        Remember Me
+                                    </label>
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
+                            <div class="mb-4">
+                                <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-md">
+                                    Login
+                                </button>
                             </div>
 
-                            <div class="form-group row">
-                                <div class="col-md-6 offset-md-4">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                        <label class="form-check-label" for="remember">
-                                            Remember Me
-                                        </label>
-                                    </div>
+                            @if (Route::has('password.request'))
+                                <div class="text-center">
+                                    <a class="text-indigo-400 hover:text-indigo-500" href="{{ route('password.request') }}">
+                                        Forgot Your Password?
+                                    </a>
                                 </div>
-                            </div>
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Login
-                                    </button>
-
-                                    @if (Route::has('password.request'))
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            Forgot Your Password?
-                                        </a>
-                                    @endif
-                                </div>
-                            </div>
+                            @endif
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Tailwind JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.js"></script>
 </body>
 </html>

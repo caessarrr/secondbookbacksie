@@ -1,41 +1,28 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="container" style="margin-top: 100px">
-
-        <div class="row justify-content-center">
-
-            <div class="col-md-8">
-
-                <div class="card">
-
-                    <div class="card-header">{{ __('Admin Dashboard') }}</div>
-
-
-                    <div class="card-body">
-
+    <div class="container mx-auto mt-24">
+        <div class="flex justify-center">
+            <div class="w-full max-w-md">
+                <div class="bg-gray-800 shadow-md rounded-lg overflow-hidden ml-5">
+                    <div class="bg-gray-900 px-6 py-4">
+                        <h2 class="text-white text-xl font-semibold">{{ __('Admin Dashboard') }}</h2>
+                    </div>
+                    <div class="px-6 py-4">
                         @auth('admin')
                             @if (Auth::guard('admin')->check())
-                                <p class="lead">Welcome, {{ Auth::guard('admin')->user()->name }}!</p>
-                                <p class="lead">What would you like to manage?</p>
-                                
-                                
+                                <p class="text-white">Welcome, {{ Auth::guard('admin')->user()->name }}!</p>
+                                <p class="text-gray-400">What would you like to manage?</p>
                             @else
-                                <p class="lead">Error: Unable to retrieve authenticated admin user.</p>
+                                <p class="text-red-500">Error: Unable to retrieve authenticated admin user.</p>
                             @endif
                         @else
-                            <p class="lead">Welcome!</p>
+                            <p class="text-white">Welcome!</p>
                         @endauth
-
                         <!-- Add other content as needed -->
-
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
 @endsection
