@@ -15,8 +15,13 @@
         </div>
     @endif
 
+    <!-- Button to add a new seller -->
+    <div class="mt-4">
+        <a href="{{ route('admin.sellers.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add New Seller</a>
+    </div>
+
     <!-- Table to display sellers -->
-    <div class="overflow-x-auto">
+    <div class="overflow-x-auto mt-5">
         <table class="min-w-full bg-gray-800 border border-gray-700">
             <thead>
                 <tr class="w-full bg-gray-700 text-left text-gray-200 uppercase text-sm leading-normal">
@@ -50,9 +55,6 @@
         </table>
     </div>
 
-    <!-- Button to add a new seller -->
-    <div class="mt-4">
-        <a href="{{ route('admin.sellers.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add New Seller</a>
-    </div>
+    
 </div>
 @endsection

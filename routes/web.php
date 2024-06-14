@@ -43,6 +43,14 @@ Route::prefix('admin')->group(function () {
         Route::get('/sellers/{seller}/edit', [AdminController::class, 'editSeller'])->name('admin.sellers.edit');
         Route::put('/sellers/{seller}', [AdminController::class, 'updateSeller'])->name('admin.sellers.update');
         Route::delete('/sellers/{seller}', [AdminController::class, 'deleteSeller'])->name('admin.sellers.delete');
+
+        
+        Route::get('admin/stores', [AdminController::class, 'indexStore'])->name('admin.stores.index');
+        Route::get('admin/stores/create', [AdminController::class, 'createStore'])->name('admin.stores.create');
+        Route::post('admin/stores', [AdminController::class, 'storeStore'])->name('admin.stores.store');
+        Route::get('admin/stores/{store}/edit', [AdminController::class, 'editStore'])->name('admin.stores.edit');
+        Route::put('admin/stores/{store}', [AdminController::class, 'updateStore'])->name('admin.stores.update');
+        Route::delete('admin/stores/{store}', [AdminController::class, 'destroyStore'])->name('admin.stores.destroy');
     });
 
 });
@@ -65,5 +73,6 @@ Route::middleware(['auth'])->group(function () {
 
 
 // routes/web.php
+
 
 
