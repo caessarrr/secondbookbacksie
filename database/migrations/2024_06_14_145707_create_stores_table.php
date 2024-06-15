@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -18,6 +19,15 @@ return new class extends Migration
             $table->text('store_details')->nullable();
             $table->timestamps();
         });
+
+        // Menambahkan data toko untuk setiap seller
+        DB::table('stores')->insert([
+            ['seller_id' => 1, 'store_name' => 'Toko Buku A', 'store_details' => 'Toko buku di Jakarta'],
+            ['seller_id' => 2, 'store_name' => 'Toko Buku B', 'store_details' => 'Toko buku di Bandung'],
+            ['seller_id' => 3, 'store_name' => 'Toko Buku C', 'store_details' => 'Toko buku di Surabaya'],
+            ['seller_id' => 4, 'store_name' => 'Toko Buku D', 'store_details' => 'Toko buku di Yogyakarta'],
+            ['seller_id' => 5, 'store_name' => 'Toko Buku E', 'store_details' => 'Toko buku di Bali']
+        ]);
     }
 
     /**
