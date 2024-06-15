@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\SellerController;
 use App\Http\Controllers\Admin\StoreController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Middleware\AdminAuth;
 
 
@@ -62,6 +63,15 @@ Route::prefix('admin')->group(function () {
         Route::get('categories/{category}/edit', [CategoryController::class, 'edit'])->name('admin.categories.edit');
         Route::put('categories/{category}', [CategoryController::class, 'update'])->name('admin.categories.update');
         Route::delete('categories/{category}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
+
+        // Menambahkan route pengelolaan Product
+        Route::get('products', [ProductController::class, 'index'])->name('admin.products.index');
+        Route::get('products/create', [ProductController::class, 'create'])->name('admin.products.create');
+        Route::post('products', [ProductController::class, 'store'])->name('admin.products.store');
+        Route::get('products/{product}', [ProductController::class, 'show'])->name('admin.products.show');
+        Route::get('products/{product}/edit', [ProductController::class, 'edit'])->name('admin.products.edit');
+        Route::put('products/{product}', [ProductController::class, 'update'])->name('admin.products.update');
+        Route::delete('products/{product}', [ProductController::class, 'destroy'])->name('admin.products.destroy');
     });
 
 });
