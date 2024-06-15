@@ -4,6 +4,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\SellerController;
+use App\Http\Controllers\Admin\StoreController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Middleware\AdminAuth;
 
 
@@ -36,21 +39,29 @@ Route::prefix('admin')->group(function () {
     Route::middleware([AdminAuth::class])->group(function () {
         Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 
-        
-        Route::get('/sellers', [AdminController::class, 'showSellers'])->name('admin.sellers.index');
-        Route::get('/sellers/create', [AdminController::class, 'createSeller'])->name('admin.sellers.create');
-        Route::post('/sellers', [AdminController::class, 'storeSeller'])->name('admin.sellers.store');
-        Route::get('/sellers/{seller}/edit', [AdminController::class, 'editSeller'])->name('admin.sellers.edit');
-        Route::put('/sellers/{seller}', [AdminController::class, 'updateSeller'])->name('admin.sellers.update');
-        Route::delete('/sellers/{seller}', [AdminController::class, 'deleteSeller'])->name('admin.sellers.delete');
+        // Menambahkan route pengelolaan Seller
+        Route::get('/sellers', [SellerController::class, 'indexSellers'])->name('admin.sellers.index');
+        Route::get('/sellers/create', [SellerController::class, 'createSeller'])->name('admin.sellers.create');
+        Route::post('/sellers', [SellerController::class, 'storeSeller'])->name('admin.sellers.store');
+        Route::get('/sellers/{seller}/edit', [SellerController::class, 'editSeller'])->name('admin.sellers.edit');
+        Route::put('/sellers/{seller}', [SellerController::class, 'updateSeller'])->name('admin.sellers.update');
+        Route::delete('/sellers/{seller}', [SellerController::class, 'deleteSeller'])->name('admin.sellers.delete');
 
-        
-        Route::get('admin/stores', [AdminController::class, 'indexStore'])->name('admin.stores.index');
-        Route::get('admin/stores/create', [AdminController::class, 'createStore'])->name('admin.stores.create');
-        Route::post('admin/stores', [AdminController::class, 'storeStore'])->name('admin.stores.store');
-        Route::get('admin/stores/{store}/edit', [AdminController::class, 'editStore'])->name('admin.stores.edit');
-        Route::put('admin/stores/{store}', [AdminController::class, 'updateStore'])->name('admin.stores.update');
-        Route::delete('admin/stores/{store}', [AdminController::class, 'destroyStore'])->name('admin.stores.destroy');
+        // Menambahkan route pengelolaan Store
+        Route::get('/stores', [StoreController::class, 'indexStore'])->name('admin.stores.index');
+        Route::get('/stores/create', [StoreController::class, 'createStore'])->name('admin.stores.create');
+        Route::post('/stores', [StoreController::class, 'storeStore'])->name('admin.stores.store');
+        Route::get('/stores/{store}/edit', [StoreController::class, 'editStore'])->name('admin.stores.edit');
+        Route::put('/stores/{store}', [StoreController::class, 'updateStore'])->name('admin.stores.update');
+        Route::delete('/stores/{store}', [StoreController::class, 'destroyStore'])->name('admin.stores.destroy');
+
+        // Menambahkan route pengelolaan Category
+        Route::get('categories', [CategoryController::class, 'index'])->name('admin.categories.index');
+        Route::get('categories/create', [CategoryController::class, 'create'])->name('admin.categories.create');
+        Route::post('categories', [CategoryController::class, 'store'])->name('admin.categories.store');
+        Route::get('categories/{category}/edit', [CategoryController::class, 'edit'])->name('admin.categories.edit');
+        Route::put('categories/{category}', [CategoryController::class, 'update'])->name('admin.categories.update');
+        Route::delete('categories/{category}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
     });
 
 });
@@ -69,10 +80,5 @@ Route::middleware(['auth'])->group(function () {
 
    
 });
-
-
-
-// routes/web.php
-
 
 

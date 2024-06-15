@@ -68,6 +68,9 @@
                     <li class="nav-item">
                         <a href="{{ route('admin.stores.index') }}" class="text-gray-400 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md">Kelola Toko</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.categories.index') }}" class="text-gray-400 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md">Kelola Kategori</a>
+                    </li>
                 </ul>
             </div>
         </div>
