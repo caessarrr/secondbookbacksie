@@ -66,6 +66,9 @@
                         <a href="{{ route('admin.sellers.index') }}" class="text-gray-400 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md">Kelola Seller</a>
                     </li>
                     <li class="nav-item">
+                        <a href="{{ route('admin.customers.index') }}" class="text-gray-400 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md">Kelola Customer</a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ route('admin.stores.index') }}" class="text-gray-400 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md">Kelola Toko</a>
                     </li>
                     <li class="nav-item">

@@ -52,7 +52,7 @@
         <!-- Submit Button -->
         <div class="flex items-center justify-between">
             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Simpan Perubahan</button>
-            <a href="{{ route('admin.sellers.index') }}" class="text-gray-400 hover:text-gray-200">Batal</a>
+            <a href="{{ route('admin.sellers.index') }}" class="text-gray-400 hover:text-gray-200 bg-gray-700 hover:bg-gray-600 py-2 px-4 rounded">Batal</a>
         </div>
     </form>
 </div>

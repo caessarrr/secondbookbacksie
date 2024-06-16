@@ -37,7 +37,7 @@ class SellerController extends Controller
         return redirect()->route('admin.sellers.index');
     }
 
-    public function deleteSeller(Seller $seller)
+    public function destroySeller(Seller $seller)
     {
         $seller->delete();
         return redirect()->route('admin.sellers.index');

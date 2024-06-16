@@ -1,12 +1,12 @@
-{{-- resources/views/admin/sellers/index.blade.php --}}
+{{-- resources/views/admin/customers/index.blade.php --}}
 
 @extends('layouts.admin')
 
-@section('title', 'Kelola Seller')
+@section('title', 'Kelola Customer')
 
 @section('content')
 <div class="container mx-auto my-8">
-    <h1 class="text-3xl font-bold mb-4 text-gray-100">Kelola Seller</h1>
+    <h1 class="text-3xl font-bold mb-4 text-gray-100">Kelola Customer</h1>
 
     <!-- Display Success Messages -->
     @if (session('success'))
@@ -15,12 +15,12 @@
         </div>
     @endif
 
-    <!-- Button to add a new seller -->
+    <!-- Button to add a new customer -->
     <div class="mt-4">
-        <a href="{{ route('admin.sellers.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add New Seller</a>
+        <a href="{{ route('admin.customers.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add New Customer</a>
     </div>
 
-    <!-- Table to display sellers -->
+    <!-- Table to display customers -->
     <div class="overflow-x-auto mt-5">
         <table class="min-w-full bg-gray-800 border border-gray-700">
             <thead>
@@ -34,16 +34,16 @@
                 </tr>
             </thead>
             <tbody class="text-gray-200 text-sm font-light">
-                @foreach ($sellers as $seller)
+                @foreach ($customers as $customer)
                     <tr class="border-b border-gray-700 hover:bg-gray-600">
-                        <td class="py-3 px-6">{{ $seller->id }}</td>
-                        <td class="py-3 px-6">{{ $seller->name }}</td>
-                        <td class="py-3 px-6">{{ $seller->email }}</td>
-                        <td class="py-3 px-6">{{ $seller->phone }}</td>
-                        <td class="py-3 px-6">{{ $seller->address }}</td>
+                        <td class="py-3 px-6">{{ $customer->id }}</td>
+                        <td class="py-3 px-6">{{ $customer->name }}</td>
+                        <td class="py-3 px-6">{{ $customer->email }}</td>
+                        <td class="py-3 px-6">{{ $customer->phone }}</td>
+                        <td class="py-3 px-6">{{ $customer->address }}</td>
                         <td class="py-3 px-6 flex">
-                            <a href="{{ route('admin.sellers.edit', $seller->id) }}" class="text-yellow-500 hover:text-yellow-300 mx-2">Edit</a>
-                            <form action="{{ route('admin.sellers.destroy', $seller->id) }}" method="POST" class="inline-block">
+                            <a href="{{ route('admin.customers.edit', $customer->id) }}" class="text-yellow-500 hover:text-yellow-300 mx-2">Edit</a>
+                            <form action="{{ route('admin.customers.destroy', $customer->id) }}" method="POST" class="inline-block">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="text-red-500 hover:text-red-300 mx-2">Delete</button>
@@ -54,7 +54,5 @@
             </tbody>
         </table>
     </div>
-
-    
 </div>
 @endsection

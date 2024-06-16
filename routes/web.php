@@ -5,6 +5,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\SellerController;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\StoreController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
@@ -46,7 +47,15 @@ Route::prefix('admin')->group(function () {
         Route::post('/sellers', [SellerController::class, 'storeSeller'])->name('admin.sellers.store');
         Route::get('/sellers/{seller}/edit', [SellerController::class, 'editSeller'])->name('admin.sellers.edit');
         Route::put('/sellers/{seller}', [SellerController::class, 'updateSeller'])->name('admin.sellers.update');
-        Route::delete('/sellers/{seller}', [SellerController::class, 'deleteSeller'])->name('admin.sellers.delete');
+        Route::delete('/sellers/{seller}', [SellerController::class, 'destroySeller'])->name('admin.sellers.destroy');
+
+        // Menambahkan route pengelolaan Customer
+        Route::get('/customers', [CustomerController::class, 'index'])->name('admin.customers.index');
+        Route::get('/customers/create', [CustomerController::class, 'create'])->name('admin.customers.create');
+        Route::post('/customers', [CustomerController::class, 'store'])->name('admin.customers.store');
+        Route::get('/customers/{customer}/edit', [CustomerController::class, 'edit'])->name('admin.customers.edit');
+        Route::put('/customers/{customer}', [CustomerController::class, 'update'])->name('admin.customers.update');
+        Route::delete('/customers/{customer}', [CustomerController::class, 'destroy'])->name('admin.customers.destroy');
 
         // Menambahkan route pengelolaan Store
         Route::get('/stores', [StoreController::class, 'indexStore'])->name('admin.stores.index');
