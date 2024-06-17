@@ -18,20 +18,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+
+use App\Http\Controllers\Api\SellerController;
+use App\Http\Controllers\Api\StoreController;
+use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CustomerController;
 
-// Mendapatkan semua customer
-Route::get('/customers', [CustomerController::class, 'index']);
+// Routes for Seller
+Route::apiResource('sellers', SellerController::class);
 
-// Mendapatkan customer berdasarkan ID
-Route::get('/customers/{customer}', [CustomerController::class, 'show']);
+// Routes for Store
+Route::apiResource('stores', StoreController::class);
 
-// Membuat customer baru
-Route::post('/customers', [CustomerController::class, 'store']);
+// Routes for Product
+Route::apiResource('products', ProductController::class);
 
-// Memperbarui customer berdasarkan ID
-Route::put('/customers/{customer}', [CustomerController::class, 'update']);
-
-// Menghapus customer berdasarkan ID
-Route::delete('/customers/{customer}', [CustomerController::class, 'destroy']);
+// Routes for Product
+Route::apiResource('customers', CustomerController::class);
 
