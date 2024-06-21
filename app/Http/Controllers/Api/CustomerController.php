@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
 {
@@ -49,5 +50,17 @@ class CustomerController extends Controller
     {
         $customer->delete();
         return response()->json(null, 204);
+    }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            return response()->json($user);
+        } else {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
     }
 }

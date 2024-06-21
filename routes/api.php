@@ -37,6 +37,7 @@ Route::apiResource('products', ProductController::class);
 
 // Routes for Customer
 Route::apiResource('customers', CustomerController::class);
+Route::post('customers/login', [CustomerController::class, 'login']);
 
 // Routes for Category
 Route::apiResource('categories', CategoryController::class);
