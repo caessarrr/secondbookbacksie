@@ -63,4 +63,25 @@ class CustomerController extends Controller
             return response()->json(['message' => 'Unauthorized'], 401);
         }
     }
+
+    public function register(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:customers',
+            'password' => 'required|string|min:8',
+            'phone' => 'nullable|string',
+            'address' => 'nullable|string'
+        ]);
+
+        $customer = Customer::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => bcrypt($validatedData['password']),
+            'phone' => $validatedData['phone'],
+            'address' => $validatedData['address']
+        ]);
+
+        return response()->json($customer, 201);
+    }
 }
