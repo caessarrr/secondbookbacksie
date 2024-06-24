@@ -15,8 +15,6 @@ use App\Http\Middleware\AdminAuth;
 
 
 
-use App\Http\Controllers\PublicController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -91,13 +89,5 @@ Route::prefix('admin')->group(function () {
 
 
 
-
-Route::middleware(['auth'])->group(function () {
-    Route::prefix('admin')->group(function () {
-        Route::resource('posts', AdminPostController::class);
-    });
-
-   
-});
 
 
