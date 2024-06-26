@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('seller_id')->constrained('sellers')->onDelete('cascade');
             $table->string('store_name');
             $table->text('store_details')->nullable();
+            $table->string('profile_photo')->nullable();
             $table->timestamps();
         });
 

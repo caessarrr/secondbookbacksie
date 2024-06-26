@@ -49,6 +49,12 @@
             @enderror
         </div>
 
+        <!-- Profile Photo Input -->
+        <div class="mb-4">
+            <label for="profile_photo" class="block text-gray-200 text-sm font-bold mb-2">Foto Profil</label>
+            <input type="file" id="profile_photo" name="profile_photo" class="form-input w-full bg-gray-700 border border-gray-600 text-gray-200 rounded py-2 px-3 focus:outline-none focus:border-gray-500">
+        </div>
+
         <!-- Submit Button -->
         <div class="flex items-center justify-between">
             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Simpan Perubahan</button>

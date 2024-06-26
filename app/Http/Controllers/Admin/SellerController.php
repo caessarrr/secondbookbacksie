@@ -22,6 +22,14 @@ class SellerController extends Controller
 
     public function storeSeller(Request $request)
     {
+        // Handle profile photo upload and update
+        if ($request->hasFile('profile_photo')) {
+            $profilePhoto = $request->file('profile_photo');
+            $profilePhotoName = time() . '_' . $profilePhoto->getClientOriginalName();
+            $profilePhoto->move(public_path('profile_photos'), $profilePhotoName);
+            $data['profile_photo'] = $profilePhotoName;
+        }
+
         $seller = Seller::create($request->all());
         return redirect()->route('admin.sellers.index');
     }
@@ -33,6 +41,14 @@ class SellerController extends Controller
 
     public function updateSeller(Request $request, Seller $seller)
     {
+        // Handle profile photo upload and update
+        if ($request->hasFile('profile_photo')) {
+            $profilePhoto = $request->file('profile_photo');
+            $profilePhotoName = time() . '_' . $profilePhoto->getClientOriginalName();
+            $profilePhoto->move(public_path('profile_photos'), $profilePhotoName);
+            $data['profile_photo'] = $profilePhotoName;
+        }
+
         $seller->update($request->all());
         return redirect()->route('admin.sellers.index');
     }

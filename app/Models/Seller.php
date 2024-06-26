@@ -11,7 +11,7 @@ class Seller extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'email', 'password', 'phone', 'address'
+        'name', 'email', 'password', 'phone', 'address', 'profile_photo'
     ];
 
     protected $hidden = [

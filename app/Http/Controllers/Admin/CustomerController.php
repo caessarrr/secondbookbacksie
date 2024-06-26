@@ -26,11 +26,15 @@ class CustomerController extends Controller
             'email' => 'required|string|email|max:255|unique:customers',
             'password' => 'required|string|min:8',
             'phone' => 'nullable|string',
-            'address' => 'nullable|string'
+            'address' => 'nullable|string',
+            'profile_photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
         ]);
 
         $customer = new Customer($request->all());
         $customer->password = bcrypt($request->password);
+        if ($request->hasFile('profile_photo')) {
+            $customer->profile_photo = $request->file('profile_photo')->store('public/profile_photos');
+        }
         $customer->save();
 
         return redirect()->route('admin.customers.index');
@@ -52,10 +56,15 @@ class CustomerController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:customers,email,' . $customer->id,
             'phone' => 'nullable|string',
-            'address' => 'nullable|string'
+            'address' => 'nullable|string',
+            'profile_photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
         ]);
 
         $customer->update($request->all());
+        if ($request->hasFile('profile_photo')) {
+            $customer->profile_photo = $request->file('profile_photo')->store('public/profile_photos');
+            $customer->save();
+        }
         return redirect()->route('admin.customers.index');
     }
 
