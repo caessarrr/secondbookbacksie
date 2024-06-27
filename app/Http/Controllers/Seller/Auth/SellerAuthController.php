@@ -107,7 +107,7 @@ class SellerAuthController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/seller/login');
     }
 }
 
