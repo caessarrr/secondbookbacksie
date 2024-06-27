@@ -88,6 +88,7 @@ Route::prefix('admin')->group(function () {
 
 use App\Http\Controllers\Seller\Auth\SellerAuthController;
 use App\Http\Middleware\SellerAuthenticate;
+use App\Http\Controllers\Seller\SellerStoreController;
 
 Route::prefix('seller')->group(function () {
     Route::get('/register', [SellerAuthController::class, 'showRegisterForm'])->name('seller.register');
@@ -100,5 +101,9 @@ Route::prefix('seller')->group(function () {
         Route::get('/dashboard', function () {
             return view('seller.dashboard');
         })->name('seller.dashboard');
+    
+        Route::get('/store', [SellerStoreController::class, 'indexStore'])->name('seller.stores.index');
+        Route::get('/store/{store}/edit', [SellerStoreController::class, 'editStore'])->name('seller.stores.edit');
+        Route::put('/store/{store}', [SellerStoreController::class, 'updateStore'])->name('seller.stores.update');
     });
 });

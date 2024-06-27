@@ -2,31 +2,25 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Auth\Authenticatable;
 
-class Seller extends Authenticatable
+class Seller extends Model implements AuthenticatableContract
 {
-    use HasFactory, Notifiable;
+    use Authenticatable;
 
     protected $fillable = [
-        'name', 'email', 'password', 'phone', 'address', 'profile_photo'
+        'name', 'email', 'password',
     ];
 
     protected $hidden = [
         'password', 'remember_token',
     ];
 
-    // Relationship with products
-    public function products()
+    public function store()
     {
-        return $this->hasMany(Product::class);
-    }
-
-    // Relationship with orders
-    public function orders()
-    {
-        return $this->hasMany(Order::class);
+        return $this->hasOne(Store::class);
     }
 }
+

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Seller\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Seller;
+use App\Models\Store; // Tambahkan model Store
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -37,12 +38,11 @@ class SellerAuthController extends Controller
         $seller = Seller::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password), // Hash password
+            'password' => Hash::make($request->password),
         ]);
 
-        Auth::guard('seller')->login($seller);
-
-        return redirect()->route('seller.dashboard');
+        // Setelah seller berhasil diregistrasi, redirect ke halaman login atau lainnya
+        return redirect()->route('seller.login')->with('success', 'Registration successful. Please login.');
     }
 
     /**
@@ -71,9 +71,23 @@ class SellerAuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::guard('seller')->attempt($credentials)) {
+            // Jika login berhasil, cek apakah seller sudah memiliki toko
+            $seller = Auth::guard('seller')->user();
+
+            if (!$seller->store) {
+                // Jika seller belum memiliki toko, buat toko baru
+                Store::create([
+                    'seller_id' => $seller->id,
+                    'store_name' => 'Default Store Name', // Ganti dengan nama default jika perlu
+                    'store_details' => 'Default Store Description', // Ganti dengan deskripsi default jika perlu
+                ]);
+            }
+
+            // Redirect ke dashboard atau halaman lainnya setelah login
             return redirect()->route('seller.dashboard');
         }
 
+        // Jika login gagal, kembalikan dengan pesan error
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->withInput();
@@ -93,6 +107,7 @@ class SellerAuthController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/seller/login');
+        return redirect('/');
     }
 }
+

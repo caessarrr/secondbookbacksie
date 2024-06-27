@@ -17,6 +17,7 @@
                 <ul class="mt-4">
                     <!-- Sidebar items -->
                     <li><a href="#" class="block py-2 px-4 text-white hover:bg-orange-700">Dashboard</a></li>
+                    <li><a href="{{ route('seller.stores.index') }}" class="block py-2 px-4 text-white hover:bg-orange-700">Toko</a></li>
                     <li><a href="#" class="block py-2 px-4 text-white hover:bg-orange-700">Orders</a></li>
                     <li><a href="#" class="block py-2 px-4 text-white hover:bg-orange-700">Products</a></li>
                 </ul>
