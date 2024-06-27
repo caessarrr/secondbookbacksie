@@ -3,34 +3,28 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Seller extends Model
+class Seller extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
     protected $fillable = [
         'name', 'email', 'password', 'phone', 'address', 'profile_photo'
     ];
 
     protected $hidden = [
-        'password',
+        'password', 'remember_token',
     ];
 
-    // Accessor to hash password when setting it
-    public function setPasswordAttribute($password)
-    {
-        $this->attributes['password'] = Hash::make($password);
-    }
-
-    // Relasi dengan model Product
+    // Relationship with products
     public function products()
     {
         return $this->hasMany(Product::class);
     }
 
-    // Relasi dengan model Order
+    // Relationship with orders
     public function orders()
     {
         return $this->hasMany(Order::class);

@@ -30,7 +30,13 @@ class SellerController extends Controller
             $data['profile_photo'] = $profilePhotoName;
         }
 
-        $seller = Seller::create($request->all());
+        $data = $request->all();
+        
+        if ($request->has('password')) {
+            $data['password'] = bcrypt($request->password);
+        }
+
+        $seller = Seller::create($data);
         return redirect()->route('admin.sellers.index');
     }
 

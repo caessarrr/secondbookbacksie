@@ -46,10 +46,12 @@ return [
             'provider' => 'admins',
         ],
 
-        'author' => [
+        'seller' => [
             'driver' => 'session',
-            'provider' => 'authors',
+            'provider' => 'sellers',
         ],
+
+        
     ],
 
     /*
@@ -80,9 +82,9 @@ return [
             'model' => App\Models\Admin::class,
         ],
 
-        'authors' => [
+        'sellers' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Author::class,
+            'model' => App\Models\Seller::class,
         ],
     ],
 

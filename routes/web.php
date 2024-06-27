@@ -86,8 +86,19 @@ Route::prefix('admin')->group(function () {
 
 
 
+use App\Http\Controllers\Seller\Auth\SellerAuthController;
+use App\Http\Middleware\SellerAuthenticate;
 
+Route::prefix('seller')->group(function () {
+    Route::get('/register', [SellerAuthController::class, 'showRegisterForm'])->name('seller.register');
+    Route::post('/register', [SellerAuthController::class, 'register']);
+    Route::get('/login', [SellerAuthController::class, 'showLoginForm'])->name('seller.login');
+    Route::post('/login', [SellerAuthController::class, 'login'])->name('seller.login.submit');
+    Route::post('/logout', [SellerAuthController::class, 'logout'])->name('seller.logout');
 
-
-
-
+    Route::middleware([SellerAuthenticate::class])->group(function () {
+        Route::get('/dashboard', function () {
+            return view('seller.dashboard');
+        })->name('seller.dashboard');
+    });
+});
