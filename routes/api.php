@@ -8,7 +8,7 @@ use App\Http\Controllers\Api\StoreController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\CategoryController;
-
+use App\Http\Controllers\Api\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,8 +24,6 @@ use App\Http\Controllers\Api\CategoryController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-
 
 // Routes for Seller
 Route::apiResource('sellers', SellerController::class);
@@ -43,3 +41,7 @@ Route::post('customers/register', [CustomerController::class, 'register']);
 
 // Routes for Category
 Route::apiResource('categories', CategoryController::class);
+
+// Route for Order and Midtrans Integration
+Route::middleware('auth:sanctum')->post('/create-order', [OrderController::class, 'createOrder']);
+// Route::post('/create-order', [OrderController::class, 'createOrder']);

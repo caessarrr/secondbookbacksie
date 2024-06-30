@@ -117,6 +117,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         array (
             'Monolog\\' => 8,
             'Mockery\\' => 8,
+            'Midtrans\\' => 9,
         ),
         'L' => 
         array (
@@ -354,8 +355,8 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -392,6 +393,10 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'Mockery\\' => 
         array (
             0 => __DIR__ . '/..' . '/mockery/mockery/library/Mockery',
+        ),
+        'Midtrans\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans',
         ),
         'League\\MimeTypeDetection\\' => 
         array (
@@ -532,30 +537,38 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Admin\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminController.php',
-        'App\\Http\\Controllers\\Admin\\AdminPostController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/AdminPostController.php',
-        'App\\Http\\Controllers\\Admin\\ManageAuthorController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ManageAuthorController.php',
-        'App\\Http\\Controllers\\Admin\\ManageCategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ManageCategoryController.php',
-        'App\\Http\\Controllers\\Author\\AuthorController' => __DIR__ . '/../..' . '/app/Http/Controllers/Author/AuthorController.php',
-        'App\\Http\\Controllers\\Author\\AuthorPostController' => __DIR__ . '/../..' . '/app/Http/Controllers/Author/AuthorPostController.php',
+        'App\\Http\\Controllers\\Admin\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CategoryController.php',
+        'App\\Http\\Controllers\\Admin\\CustomerController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CustomerController.php',
+        'App\\Http\\Controllers\\Admin\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ProductController.php',
+        'App\\Http\\Controllers\\Admin\\SellerController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SellerController.php',
+        'App\\Http\\Controllers\\Admin\\StoreController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/StoreController.php',
+        'App\\Http\\Controllers\\Api\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/CategoryController.php',
+        'App\\Http\\Controllers\\Api\\CustomerController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/CustomerController.php',
+        'App\\Http\\Controllers\\Api\\ProductController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/ProductController.php',
+        'App\\Http\\Controllers\\Api\\SellerController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/SellerController.php',
+        'App\\Http\\Controllers\\Api\\StoreController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/StoreController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
-        'App\\Http\\Controllers\\PublicController' => __DIR__ . '/../..' . '/app/Http/Controllers/PublicController.php',
+        'App\\Http\\Controllers\\Seller\\Auth\\SellerAuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/Seller/Auth/SellerAuthController.php',
+        'App\\Http\\Controllers\\Seller\\SellerStoreController' => __DIR__ . '/../..' . '/app/Http/Controllers/Seller/SellerStoreController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\AdminAccess' => __DIR__ . '/../..' . '/app/Http/Middleware/AdminAccess.php',
         'App\\Http\\Middleware\\AdminAuth' => __DIR__ . '/../..' . '/app/Http/Middleware/AdminAuth.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
-        'App\\Http\\Middleware\\EnsureAuthorHasAccount' => __DIR__ . '/../..' . '/app/Http/Middleware/EnsureAuthorHasAccount.php',
         'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => __DIR__ . '/../..' . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
+        'App\\Http\\Middleware\\SellerAuthenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/SellerAuthenticate.php',
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\ValidateSignature' => __DIR__ . '/../..' . '/app/Http/Middleware/ValidateSignature.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
-        'App\\Models\\Author' => __DIR__ . '/../..' . '/app/Models/Author.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
-        'App\\Models\\Post' => __DIR__ . '/../..' . '/app/Models/Post.php',
+        'App\\Models\\Customer' => __DIR__ . '/../..' . '/app/Models/Customer.php',
+        'App\\Models\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
+        'App\\Models\\Seller' => __DIR__ . '/../..' . '/app/Models/Seller.php',
+        'App\\Models\\Store' => __DIR__ . '/../..' . '/app/Models/Store.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -3240,6 +3253,14 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'League\\MimeTypeDetection\\GeneratedExtensionToMimeTypeMap' => __DIR__ . '/..' . '/league/mime-type-detection/src/GeneratedExtensionToMimeTypeMap.php',
         'League\\MimeTypeDetection\\MimeTypeDetector' => __DIR__ . '/..' . '/league/mime-type-detection/src/MimeTypeDetector.php',
         'League\\MimeTypeDetection\\OverridingExtensionToMimeTypeMap' => __DIR__ . '/..' . '/league/mime-type-detection/src/OverridingExtensionToMimeTypeMap.php',
+        'Midtrans\\ApiRequestor' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/ApiRequestor.php',
+        'Midtrans\\Config' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Config.php',
+        'Midtrans\\CoreApi' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/CoreApi.php',
+        'Midtrans\\Notification' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Notification.php',
+        'Midtrans\\Sanitizer' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Sanitizer.php',
+        'Midtrans\\Snap' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Snap.php',
+        'Midtrans\\SnapApiRequestor' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/SnapApiRequestor.php',
+        'Midtrans\\Transaction' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Transaction.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegrationAssertPostConditions' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegrationAssertPostConditions.php',
         'Mockery\\Adapter\\Phpunit\\MockeryTestCase' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryTestCase.php',
